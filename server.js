@@ -1,17 +1,16 @@
-const app = require('./src/app');
-const { connectMongoDB } = require('./src/db/connection');
-
+const app = require("./src/app");
+const { connectMongoDB } = require("./src/db/connection");
 
 const start = async () => {
   try {
     await connectMongoDB();
     console.log("Database connection successful");
 
-    app.listen(3000, () => {
-      console.log("Server running. Use our API on port: 3000");
+    app.listen(3002, () => {
+      console.log("Server running. Use our API on port: 3002");
     });
   } catch (error) {
-    console.log( "Database connection failed");
+    console.log("Database connection failed");
     process.exit(1);
   }
 };
