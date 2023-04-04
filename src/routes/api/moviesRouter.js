@@ -4,6 +4,7 @@ const {
   getFavoritesController,
   addFavoritesController,
   deleteFavoritesController,
+  getCurrentFavoriteController,
 } = require("../../controllers/favoritesController");
 const { asyncWrapper } = require("../../helpers/apiHelpers");
 
@@ -13,10 +14,11 @@ router
 
   .get("/favorites", authMiddleware, asyncWrapper(getFavoritesController))
   .post("/favorites", authMiddleware, asyncWrapper(addFavoritesController))
-  .delete(
-    "/favorites",
+  .delete("/favorites", authMiddleware, asyncWrapper(deleteFavoritesController))
+  .get(
+    "/favorites/current",
     authMiddleware,
-    asyncWrapper(deleteFavoritesController)
+    asyncWrapper(getCurrentFavoriteController)
   );
 
 module.exports = router;

@@ -43,6 +43,10 @@ const Favorite = new Schema({
     type: SchemaTypes.ObjectId,
     ref: "User",
   },
+  id: {
+    required: true,
+    type:String,
+  }
 });
 
 module.exports = mongoose.model("Favorite", Favorite);
