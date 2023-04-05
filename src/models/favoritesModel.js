@@ -14,6 +14,9 @@ const Favorite = new Schema({
     type: String,
     default: "No release date",
   },
+  original_title: {
+    type: String,
+  },
   vote_average: {
     type: String,
     default: "No vote average",
@@ -45,8 +48,8 @@ const Favorite = new Schema({
   },
   id: {
     required: true,
-    type:String,
-  }
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Favorite", Favorite);
