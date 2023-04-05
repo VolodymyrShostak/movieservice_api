@@ -5,6 +5,7 @@ const { SchemaTypes } = mongoose;
 const Favorite = new Schema({
   title: {
     type: String,
+    default: "No title",
   },
   overview: {
     type: String,
@@ -16,6 +17,7 @@ const Favorite = new Schema({
   },
   original_title: {
     type: String,
+    default: "No original title",
   },
   vote_average: {
     type: String,

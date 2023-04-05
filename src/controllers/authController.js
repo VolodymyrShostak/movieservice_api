@@ -5,10 +5,10 @@ const registrationController = async (req, res) => {
   const token = await regisrtation(email, password);
 
   res.status(201).json({
-    email, token,
+    email,
+    token,
     status: "success",
-    message: "Registration success",
-
+    message: "You are sign up successfully!",
   });
 };
 
@@ -19,7 +19,7 @@ const loginController = async (req, res) => {
     status: "success",
     token,
     user: { email: `${email}` },
-    message: "Login success",
+    message: "You are sign in successfully! Welcome!",
   });
 };
 
@@ -27,7 +27,7 @@ const logoutController = async (req, res) => {
   const { id } = req.user;
   await logout(id);
 
-  res.status(204).json({ status: "success", message: "No content" });
+  res.status(204).json();
 };
 
 module.exports = {

@@ -10,8 +10,15 @@ class NotAuthorizedError extends ValidationError {
     this.status = 401;
   }
 }
+class ConflictError extends ValidationError {
+  constructor(message) {
+    super(message);
+    this.status = 409;
+  }
+}
 
 module.exports = {
     ValidationError,
-    NotAuthorizedError,
+  NotAuthorizedError,
+  ConflictError
 }

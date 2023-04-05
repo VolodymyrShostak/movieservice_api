@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 const jsonwebtoken = require("jsonwebtoken");
-const { NotAuthorizedError } = require("../helpers/errors");
+const { NotAuthorizedError, ConflictError } = require("../helpers/errors");
 const bcrypt = require("bcrypt");
 const sgMail = require("@sendgrid/mail");
 
@@ -9,7 +9,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const regisrtation = async (email, password) => {
   const user = await User.findOne({ email });
   if (user) {
-    throw new NotAuthorizedError("Email is already used");
+    throw new ConflictError("Email is already used");
   }
   const newUser = await User.create({
     email,
@@ -58,6 +58,7 @@ const logout = async (id) => {
   const user = await User.findByIdAndUpdate(id, { token: null });
 
   if (!user) throw new NotAuthorizedError("Not authorized");
+  
 };
 
 module.exports = {
